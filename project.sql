@@ -6,12 +6,12 @@
 
 
 --Drop
-DROP DATABASE IF EXISTS pawpalDB;
+DROP DATABASE IF EXISTS furever_370;
 
 --CREATE database
 
-CREATE DATABASE pawpalDB;
-USE pawpalDB;
+CREATE DATABASE furever_370;
+USE furever370;
 
 --Table definitions
 
