@@ -11,7 +11,7 @@ DROP DATABASE IF EXISTS furever_370;
 --CREATE database
 
 CREATE DATABASE furever_370;
-USE furever370;
+USE furever_370;
 
 --Table definitions
 
@@ -128,4 +128,50 @@ CREATE TABLE Gift_given (
 );
 
 
+-- Inserting data into USER table
+INSERT INTO USER (userID, user_name, user_NID, user_password, user_DOB, user_phone, user_email, user_address, user_type)
+VALUES 
+('U001', 'John Doe', 1234567890, 'password1', '1990-05-15', '1234567890', 'john@example.com', '123 Main St', 0),
+('U002', 'Jane Smith', 0987654321, 'password2', '1985-10-20', '0987654321', 'jane@example.com', '456 Oak St', 1),
+('U003', 'Alice Johnson', 1357924680, 'password3', '2000-03-25', '1357924680', 'alice@example.com', '789 Pine St', 2);
 
+-- Inserting data into PET table
+INSERT INTO PET (petID, rescuerID, pet_name, pet_age, pet_Breed, pet_type, vet_report, rescue_date)
+VALUES 
+('P001', 'U002', 'Fluffy', 3, 'Persian', 0, 'Healthy', '2023-07-10'),
+('P002', 'U002', 'Buddy', 2, 'Labrador', 1, 'Vaccinated', '2023-08-05'),
+('P003', 'U002', 'Snowball', 1, 'Lionhead', 2, 'Underweight', '2023-09-20');
+
+-- Inserting data into Past_petOwner table
+INSERT INTO Past_petOwner (petID, OwnerName)
+VALUES 
+('P001', 'John Doe'),
+('P002', 'Alice Johnson'),
+('P003', 'John Doe');
+
+-- Inserting data into Donation table
+INSERT INTO Donation (userID, TransactionID, donation_amount, donation_method, donation_date)
+VALUES 
+('U001', 'T001', 1000, 0, '2023-07-15'),
+('U002', 'T002', 500, 1, '2023-08-20'),
+('U003', 'T003', 750, 2, '2023-09-25');
+
+-- Inserting data into Review table
+INSERT INTO Review (adopteeID, reviewNO, rating, review_date, Review_story)
+VALUES 
+('U003', 'R001', 5, '2023-08-01', 'Great experience, highly recommend!'),
+('U002', 'R002', 4, '2023-09-10', 'Good service, could improve communication.');
+
+-- Inserting data into Gift table
+INSERT INTO Gift (giftID, number_gift, animal_breed, animal_type)
+VALUES 
+('G001', 10, 'Persian', 0),
+('G002', 5, 'Labrador', 1),
+('G003', 3, 'Lionhead', 2);
+
+-- Inserting data into Gift_given table
+INSERT INTO Gift_given (giftID, animalID, userID)
+VALUES 
+('G001', 'P001', 'U001'),
+('G002', 'P002', 'U003'),
+('G003', 'P003', 'U002');
