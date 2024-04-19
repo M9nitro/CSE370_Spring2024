@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furever Pet Center</title>
+  <link rel = "stylesheet" href = "style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.message a').click(function(){
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+      });
+    });
+  </script>
+  
+  
+</head>
+<body>
+<!--NavBar -->
+<div class="navbar">
+  <div class="nav-logo">
+     <a href="#">
+      <img class="logo-img" src="./img/logo.png" alt="">
+     </a>
+     </div>
+  <div class="nav-items">
+     <ul>
+       <li><a href="#"> Rescue </a></li>
+       <li><a href="#"> Adopt </a></li>
+       <li><a href="#"> Gift a pet </a></li>
+       <li><a href="#"> Contact </a></li>
+     </ul>
+   </div>
+</div>
+<!-- NavBar End -->
+<!-- Form sign in -->
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" action="singup.php" method="post">
+      <input type="text" placeholder="UserID" name="userID" required>
+      <input type="text" placeholder="Name" name="user_name" required>
+      <input type="text" placeholder="NID" name="user_NID" required>
+      <input type="text" placeholder="User Type" name="user_type" required>
+      <input type="password" placeholder="password" name="pass" required>
+      <input type="text" placeholder="Email address" name="user_email">
+      <input type="text" placeholder="Phone" name="user_phone">
+      <input type="text" placeholder="Address" name="user_address">
+
+      <input class ="button" type = "submit" value = "Sign Up">
+      
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+
+    <form class="login-form" action="signin.php" method="post">
+      <input type="text" placeholder="username" name="userID">
+      <input type="password" placeholder="password" name="pass">
+      <input class ="button" type = "submit" value = "Sign In">
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
+<!-- Form Sign in End -->
+
+</body>
+
+</html>
