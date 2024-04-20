@@ -7,14 +7,14 @@ $password = "";
 $DBname = "furever_370";
 
 //Creating Connection
-$connection_status = new mysqli($DBserver, $username, $password);
+$conn = new mysqli($DBserver, $username, $password);
 
 //Check Connection Status
-if ($connection_status->connect_error){
-    die("Connection Failed: ". $connection_statuss->connect_error);
+if ($conn->connect_error){
+    die("Connection Failed: ". $conn->connect_error);
 }
 else{
-    mysqli_select_db($connection_status, $DBname);
+    mysqli_select_db($conn, $DBname);
     echo "Database Can be accessed";
     echo "";
 }
