@@ -72,15 +72,15 @@ CREATE TABLE Past_petOwner (
 CREATE TABLE Donation (
 
     userID CHAR(10) not NULL,
-    TransactionID CHAR(10) not NULL,
+    TransactionID INT(10) not NULL AUTO INCREMENT,
     donation_amount INT not NULL CHECK(donation_amount >= 0),
-    -- 0 is Bank Transfer
-    -- 1 is Bkash
-    -- 2 is Nagad
+    
+    -- 1 is Bank Transfer
+    -- 2 is Mobile Banking
     donation_method TINYINT not NULL CHECK(donation_method BETWEEN 0 AND 2),
     donation_date DATE,
 
-    PRIMARY KEY (userID, TransactionID),
+    PRIMARY KEY (TransactionID),
     FOREIGN KEY (userID) references USER(userID)
 );
 
