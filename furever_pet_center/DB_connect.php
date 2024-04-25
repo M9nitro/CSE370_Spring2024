@@ -15,7 +15,7 @@ if ($conn->connect_error){
 }
 else{
     mysqli_select_db($conn, $DBname);
-    echo "Database Can be accessed";
-    echo "";
+    // echo "Database Can be accessed";
+
 }
 ?>

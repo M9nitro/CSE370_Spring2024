@@ -24,7 +24,7 @@ CREATE TABLE USER (
     user_password CHAR(10) not NULL,
     user_DOB date,
     user_phone CHAR(11),
-    user_email VARCHAR(20),
+    user_email VARCHAR(40),
     user_address VARCHAR(20),
     
     -- 0 is Admin
@@ -39,8 +39,8 @@ CREATE TABLE USER (
 
 CREATE TABLE PET (
 
-    petID VARCHAR(10) not NULL,
-    rescuerID VARCHAR(10) not NULL,
+    petID CHAR(10) not NULL,
+    rescuerID CHAR(10) not NULL,
     pet_name VARCHAR(10),
     pet_age int not NULL,
     pet_Breed VARCHAR(10),
@@ -64,7 +64,7 @@ CREATE TABLE Past_petOwner (
     OwnerName VARCHAR(10),
 
     PRIMARY KEY (petID, OwnerName),
-    FOREIGN KEY (petID) references PET(petID)
+    FOREIGN KEY (petID) references PET(petID) ON Delete Cascade
 );
 
 --Donation
@@ -72,15 +72,15 @@ CREATE TABLE Past_petOwner (
 CREATE TABLE Donation (
 
     userID CHAR(10) not NULL,
-    TransactionID INT(10) not NULL AUTO INCREMENT,
+    TransactionID CHAR(10) not NULL,
     donation_amount INT not NULL CHECK(donation_amount >= 0),
-    
-    -- 1 is Bank Transfer
-    -- 2 is Mobile Banking
+    -- 0 is Bank Transfer
+    -- 1 is Bkash
+    -- 2 is Nagad
     donation_method TINYINT not NULL CHECK(donation_method BETWEEN 0 AND 2),
     donation_date DATE,
 
-    PRIMARY KEY (TransactionID),
+    PRIMARY KEY (userID, TransactionID),
     FOREIGN KEY (userID) references USER(userID)
 );
 
@@ -92,7 +92,7 @@ CREATE TABLE Review (
     reviewNO CHAR(10) not NULL,
     rating INT not NULL CHECK(rating BETWEEN 1 AND 5),
     review_date DATE,
-    Review_story VARCHAR(40),
+    Review_story text,
 
     PRIMARY KEY(adopteeID, reviewNO),
     FOREIGN KEY(adopteeID) references USER(userID)
@@ -123,8 +123,21 @@ CREATE TABLE Gift_given (
     userID CHAR(10),
 
     PRIMARY KEY (giftID, animalID, userID),
-    FOREIGN KEY (animalID) references PET(petID),
+    FOREIGN KEY (animalID) references PET(petID) ON Delete Cascade,
     FOREIGN KEY (userID) references USER(userID)
+);
+
+--Request Adoptation
+CREATE TABLE Request_adoptation (
+    petID CHAR(10),
+    adminID CHAR(10),
+    adopteeID CHAR(10),
+    status CHAR(10),
+    PRIMARY KEY (petID, adopteeID),
+    FOREIGN KEY (petID) references PET(petID) ON Delete Cascade,
+    FOREIGN KEY (adminID) references USER(userID),
+    FOREIGN KEY (adminID) references USER(userID)
+
 );
 
 
@@ -175,3 +188,59 @@ VALUES
 ('G001', 'P001', 'U001'),
 ('G002', 'P002', 'U003'),
 ('G003', 'P003', 'U002');
+
+-- Inserting more data into USER table
+INSERT INTO USER (userID, user_name, user_NID, user_password, user_DOB, user_phone, user_email, user_address, user_type)
+VALUES 
+('U004', 'Michael Brown', 2468013579, 'password4', '1995-08-12', '2468013579', 'michael@example.com', '101 Elm St', 1),
+('U005', 'Emily Davis', 9876543210, 'password5', '1992-04-28', '9876543210', 'emily@example.com', '202 Maple St', 2),
+-- Add more users as needed
+('U006', 'David Wilson', 3692581470, 'password6', '1988-11-15', '3692581470', 'david@example.com', '303 Pine St', 0);
+
+-- Inserting more data into PET table
+INSERT INTO PET (petID, rescuerID, pet_name, pet_age, pet_Breed, pet_type, vet_report, rescue_date)
+VALUES 
+('P004', 'U004', 'Max', 4, 'Maine Coon', 0, 'Healthy', '2023-10-01'),
+('P005', 'U004', 'Rocky', 2, 'German Shepherd', 1, 'Vaccinated', '2023-11-15'),
+-- Add more pets as needed
+('P006', 'U005', 'Cotton', 1, 'Angora', 2, 'Underweight', '2023-12-20');
+
+-- Inserting more data into Past_petOwner table
+INSERT INTO Past_petOwner (petID, OwnerName)
+VALUES 
+('P004', 'Michael Brown'),
+('P005', 'Emily Davis'),
+-- Add more past pet owners as needed
+('P006', 'Michael Brown');
+
+-- Inserting more data into Donation table
+INSERT INTO Donation (userID, TransactionID, donation_amount, donation_method, donation_date)
+VALUES 
+('U004', 'T004', 1500, 0, '2023-10-10'),
+('U005', 'T005', 1000, 1, '2023-11-20'),
+-- Add more donations as needed
+('U006', 'T006', 1200, 2, '2023-12-25');
+
+-- Inserting more data into Review table
+INSERT INTO Review (adopteeID, reviewNO, rating, review_date, Review_story)
+VALUES 
+('U004', 'R003', 5, '2023-10-01', 'Wonderful service, exceeded expectations!'),
+('U005', 'R004', 3, '2023-11-15', 'Decent experience, could be better communicated.'),
+-- Add more reviews as needed
+('U006', 'R005', 4, '2023-12-20', 'Good service, friendly staff.');
+
+-- Inserting more data into Gift table
+INSERT INTO Gift (giftID, number_gift, animal_breed, animal_type)
+VALUES 
+('G004', 8, 'Maine Coon', 0),
+('G005', 3, 'German Shepherd', 1),
+-- Add more gifts as needed
+('G006', 5, 'Angora', 2);
+
+-- Inserting more data into Gift_given table
+INSERT INTO Gift_given (giftID, animalID, userID)
+VALUES 
+('G004', 'P004', 'U002'),
+('G005', 'P005', 'U001'),
+-- Add more gift-given entries as needed
+('G006', 'P006', 'U003');

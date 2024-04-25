@@ -1,7 +1,7 @@
 <?php
 // first of all, we need to connect to the database
-require_once('DB_connect.php');
-require_once('session.php');
+require_once('./DB_connect.php');
+require_once('./session.php');
 
 // we need to check if the input in the form textfields are not empty
 function nullORnot($string){
@@ -42,6 +42,24 @@ if(isset($_POST['userID']) && isset($_POST['user_name']) && isset($_POST['user_N
     $user_phone   = nullORnot('user_phone');
     $user_address = nullORnot('user_address');
     $user_DOB     = NULL;
+
+
+
+    $sql_check_user = " SELECT * FROM user WHERE userID = '$userID'";
+    
+    $result = mysqli_query($conn, $sql_check_user);
+    $count = mysqli_num_rows($result);
+    
+    if ($count > 0) {
+    
+        echo "<script>
+           alert('User Already Exists');
+           console.log('User Already Exists');
+        </script>";
+        
+        header("Location: index.html");
+    }
+    else{
 	
 	$sql = " INSERT INTO user VALUES ( '$userID', '$user_name', '$user_nid', '$pass', '$user_DOB',  '$user_phone', '$user_email', '$user_address', '$user_type' ) ";
 	
@@ -52,12 +70,19 @@ if(isset($_POST['userID']) && isset($_POST['user_name']) && isset($_POST['user_N
 	if(mysqli_affected_rows($conn)){
 	
 		//echo "Inserted Successfully";
-		header("Location: index.html");
+		header("Location: hompage.php");
+        echo "<script>
+            console.log('Failed To Insert in Database');
+            </script>";
 	}
 	else{
-        echo "<script>alert('User Already Exists')</script>";
+        echo "<script>
+            alert('Failed To Insert in Database');
+            console.log('Failed To Insert in Database');
+            </script>";
 		header("Location: index.html");
 	}
+    }
 	
 }
 
