@@ -72,7 +72,7 @@ CREATE TABLE Past_petOwner (
 CREATE TABLE Donation (
 
     userID CHAR(10) not NULL,
-    TransactionID int(10) not NULL AUTO_INCREMENT,
+    TransactionID INT(10) not NULL AUTO_INCREMENT,
     donation_amount INT not NULL CHECK(donation_amount >= 0),
 
      -- 1 is Bank Transfer
@@ -89,7 +89,7 @@ CREATE TABLE Donation (
 CREATE TABLE Review (
 
     adopteeID CHAR(10) not NULL,
-    reviewNO CHAR(10) not NULL,
+    reviewNO INT(10) not NULL,
     rating INT not NULL CHECK(rating BETWEEN 1 AND 5),
     review_date DATE,
     Review_story text,
@@ -102,8 +102,7 @@ CREATE TABLE Review (
 
 CREATE TABLE Gift (
 
-    giftID CHAR(10) not NULL,
-    number_gift int,
+    giftID INT(10) not NULL,
     animal_breed VARCHAR(10),
 
     -- 0 is CAT
@@ -121,6 +120,7 @@ CREATE TABLE Gift_given (
     giftID CHAR(10),
     animalID CHAR(10),
     userID CHAR(10),
+    number_gift int,
 
     PRIMARY KEY (giftID, animalID, userID),
     FOREIGN KEY (animalID) references PET(petID) ON Delete Cascade,
