@@ -107,6 +107,7 @@
 }
 
 .pet-query {
+  display: block;
   background-color: #f2f2f2;
   opacity: 95%;
   text-align: center;
@@ -114,7 +115,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
+  width: 800px;
   height: 525px; /* Adjust width as needed */
   margin-top: 50px;
   /* max-width: 1000px; Adjust max-width as needed */
@@ -124,10 +125,6 @@
 
 }
 
-.pet-query{
-  display: none;
-}
-
 .pet-query table {
   
   margin-left: 20px;
@@ -135,7 +132,7 @@
   border-collapse: collapse;
   margin: 0;
   padding: 0;
-  width: 700px;
+  width: 800px;
   table-layout: fixed;
   overflow-y: auto;
   max-height: 450px;

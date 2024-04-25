@@ -14,9 +14,6 @@ if(isset($_POST['userID']) && isset($_POST['pass'])){
 	//Execute the query 
 	$result = mysqli_query($conn, $sql_query);
 	
-	echo mysqli_num_rows($result);
-	
-
 	//check if it returns an empty set
 	if(mysqli_num_rows($result) !=0 ){
 

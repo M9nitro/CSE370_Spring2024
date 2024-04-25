@@ -1,0 +1,128 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+/* Style for the navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #606060; /* Change as per your design */
+  padding: 25px 30px; /* Adjust padding as needed */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+/* Style for the navigation logo */
+.nav-logo a {
+  color: #fff; /* Change color as per your design */
+  text-decoration: none; /* Remove underlines from links */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+/* Style for the navigation items */
+.nav-items ul {
+  list-style-type: none; /* Remove bullet points from list */
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-items ul li {
+  margin-left: 20px; /* Adjust spacing between items */
+  padding-top: 8px;
+}
+
+.nav-items ul li a {
+  color: #fff; /* Change color as per your design */
+  text-decoration: none; /* Remove underlines from links */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+.logo-img{
+  height: 30px;
+}
+
+
+.nav-items .logout {
+  background-color: #39393b;
+  padding: 8px;
+  color: black;
+  border-radius: 6px;
+}
+
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0; /* Start with fully transparent */
+    }
+    100% {
+      opacity: 1; /* Fade in to fully opaque */
+    }
+  }
+
+/* Style for the homepage welcome message */
+.adopt-search h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #333;
+  animation: fadeIn 0.5s ease-in;
+}
+.adopt-search h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    animation: fadeIn 1s ease-in;
+  }
+ 
+
+.adopt-search {
+  display: fixed;
+  background-color: #FFFFFF;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%; /* Adjust width as needed */
+  max-width: 400px; /* Adjust max-width as needed */
+  padding: 20px; /* Adjust padding as needed */
+  border-radius: 10px; /* Add border radius for styling */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+.adopt-portal {
+  
+  display: fixed;
+  background-color: #FFFFFF;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Adjust width as needed */
+  max-width: 600px; /* Adjust max-width as needed */
+  padding: 20px; /* Adjust padding as needed */
+  border-radius: 10px; /* Add border radius for styling */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+.adopt-portal .items {
+  font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 13px;
+    
+}
+
+
+body {
+  /* background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%); */
+  background-image: url("./img/hhhe.jpg");
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  }    
+
+
+

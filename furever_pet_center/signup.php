@@ -1,7 +1,7 @@
 <?php
 // first of all, we need to connect to the database
-require_once('./DB_connect.php');
-require_once('./session.php');
+require_once('DB_connect.php');
+
 
 // we need to check if the input in the form textfields are not empty
 function nullORnot($string){
@@ -22,7 +22,7 @@ function who($string){
     else if ("Rescuer" == $_POST[$string]) {
         return 1;
     }
-    else {
+    else if ("Adoptee" == $_POST[$string]) {
         return 2;
     } 
 }
@@ -37,7 +37,7 @@ if(isset($_POST['userID']) && isset($_POST['user_name']) && isset($_POST['user_N
 	$user_name    = $_POST['user_name'];
 	$user_nid     = $_POST['user_NID'];
 	$pass         = $_POST['pass'];
-    $user_type    = $_POST['user_type'];
+    $user_type    = who('user_type');
     $user_email   = nullORnot('user_email');
     $user_phone   = nullORnot('user_phone');
     $user_address = nullORnot('user_address');
@@ -70,7 +70,7 @@ if(isset($_POST['userID']) && isset($_POST['user_name']) && isset($_POST['user_N
 	if(mysqli_affected_rows($conn)){
 	
 		//echo "Inserted Successfully";
-		header("Location: hompage.php");
+		header("Location: index.html");
         echo "<script>
             console.log('Failed To Insert in Database');
             </script>";

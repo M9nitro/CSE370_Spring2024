@@ -1,4 +1,4 @@
-  <?php
+<?php
   require_once('session.php');
   require_once('DB_connect.php');
 
@@ -13,7 +13,6 @@
       return "Rabbit";
     }
   }
-
   ?>
 
 
@@ -22,9 +21,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furever Pet Center</title>
-    <link rel = "stylesheet" href = "homepage.css">
-    </head>
-
+    <link rel = "stylesheet" href = "adopt.css">
+    
   <body>
   <!--NavBar -->
   <div class="navbar">
@@ -49,24 +47,17 @@
   </div>
   <!-- NavBar End -->
 
-  <div class ="homepage-welcome">
-  <h1 >Welcome</h1>
-  <h2>Furry Friends are wating for you</h2>
-  <button class = "button">Browse</button>
+  <div class ="adopt-search">
+    <img src= "./img/damn.png" height = "80px" width = "120px" >
+  <h1 >Adopt Portal</h1>
+  <h2>Find this Cuties Home</h2>
+  <form action="adopt_process.php" method = "post">
+    <input type="text" name = "PetID" placeholder = "Pet ID" required>
+    <input type="submit" name = "submit" value = "Submit" class = "search_button">
+  </form>
   </div>
-
 
   </body>
 
-  <script>
-
-const button = document.querySelector(".button");
-
-const petQuery = document.querySelector(".pet-query");
-
-button.addEventListener('click', () => {
-  window.location.href = "browse.php";
-  
-})
-
 </script>
+</head>
