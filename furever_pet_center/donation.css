@@ -1,0 +1,61 @@
+@media (min-width: 576px) {
+    .col-sm-3 {
+        flex: 0 0 auto;
+        width: 32%;
+    }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Start with fully transparent */
+  }
+  100% {
+    opacity: 1; /* Fade in to fully opaque */
+  }
+}
+
+.bank{
+  display: none;
+}
+
+.bkash{
+  display: none;
+}
+
+
+.sub{
+    margin: 6%;
+}
+
+
+body {
+    background-image: url("img/pexels-photo-11291093.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    --bs-body-font-family: var(--bs-font-monospace);
+    --bs-body-line-height: 1.9;
+  }
+
+
+
+#donation {
+    text-align: center;
+    margin: 9%;
+    padding: 5%;
+    background-color: #F2E8C6;
+}
+
+.btn-bd-primary {
+    margin: 1.5%;
+
+    --bs-btn-bg: #BB0029;
+    --bs-btn-border-color: rgb(187, 0, 41);
+}
+
+.h1, h1{
+    color: rgb(3, 0, 44);
+}
+
+.g-2, .gy-2 {
+    --bs-gutter-y: 2.5rem;
+}
+
