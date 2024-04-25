@@ -44,7 +44,7 @@ require_once('DB_connect.php');
     <input class = "grid" type="text" placeholder="Pet Type" name="pet_type" required>
     <input class = "grid" type="text" placeholder="Pet Breed" name="pet_breed" required>
     <input class = "grid" type="text" placeholder="Pet Age" name="pet_age" required>
-    <input class = "grid" type="date" placeholder="Rescue Date" name="rescue_date" required>
+    <input class = "grid" type="text" placeholder="Past Owners (Write them separated by space)" name="past_owners" required>
     <input class = "grid" type="text" placeholder="Vet Report" name="vet_report" required><br><br>
     <input class = 'button' type ="submit" value = "Rescue">
 </form>
