@@ -86,6 +86,9 @@
                            <img class= "image" src="<?php echo $fetch_product['image']; ?>">
                            <h3><?php echo $fetch_product['gift_type']; ?></h3>
                            <p class="price">BDT<?php echo $fetch_product['gift_price']; ?></p>
+                           <input type="hidden" name="product_id"  value="<?php echo $fetch_cart['giftID']; ?>" >
+                           <input type="hidden" name="product_name" value="<?php echo $fetch_cart['gift_type']; ?>" >
+                           <input type="hidden" name="product_price" value="<?php echo $fetch_product['gift_price']; ?>">
                            <div id = "quantity" class="col-sm-3">
                               <label for="specificSizeSelect"></label>
                               <select name="quantity" class="form-select" id="specificSizeSelect" required>
