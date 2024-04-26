@@ -75,13 +75,14 @@
          <h2>What do you wish to buy for <?php echo $row['pet_name'];?>?</h2>
          <div class="container text-centre">
             <div class="box-container">
-               <form action="gift.php" method="post">   
+                  
                <?php
                   $animaltype = $row['pet_type'];
                   $select_products = mysqli_query($connection_status, "SELECT * FROM gift WHERE animal_type = $animaltype");
                   if(mysqli_num_rows($select_products) > 0){
                      while($fetch_product = mysqli_fetch_assoc($select_products)){
                ?>
+                      <form action="gift.php" method="post">
                         <div class="col">
                            <img class= "image" src="<?php echo $fetch_product['image']; ?>">
                            <h3><?php echo $fetch_product['gift_type']; ?></h3>
@@ -120,6 +121,9 @@
          <div class="container text-centre">
             <h3>Welcome Admin!</h3>
             <p>Here's the list of products available.</p>
+            <div class="container">
+            <h3>Welcome Admin!</h3>
+            <p>Here's the list of products available.</p>
             <div class="row">
                <form action="gift.php" method="post">     
                   <?php
@@ -141,68 +145,73 @@
    </section>
 
    <section class="cart">
-   <h1 class="heading">Shopping cart</h1>
+      <h1 class="heading">Shopping cart</h1>
 
-   <table>
+      <table class="content_table">
 
-      <thead>
-         <th>Name</th>
-         <th>Price</th>
-         <th>Quantity</th>
-         <th>Total price</th>
-         <th>Action</th>
-      </thead>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Price</th>
+               <th>Quantity</th>
+               <th>Total price</th>
+               <th>Update</th>
+               <th>Delete</th>
+               
+            </tr>
+            
+         </thead>
 
-      <tbody>
+         <tbody>
 
-         <?php 
-         
-         $select_cart = mysqli_query($connection_status, "SELECT * FROM cart");
-         $grand_total = 0;
-         if(mysqli_num_rows($select_cart) > 0){
-            while($fetch_cart = mysqli_fetch_assoc($select_cart)){
-         ?>
+            <?php 
+            
+            $select_cart = mysqli_query($connection_status, "SELECT * FROM cart");
+            $grand_total = 0;
+            if(mysqli_num_rows($select_cart) > 0){
+               while($fetch_cart = mysqli_fetch_assoc($select_cart)){
+            ?>
 
-         <tr>
-            <td><?php echo $fetch_cart['pname']; ?></td>
-            <td>BDT<?php echo number_format($fetch_cart['price']); ?></td>
-            <td>
-               <form action="gift.php" method="post">
-                  <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['gift_id']; ?>" >
-                  <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
-                  <input type="submit" value="update" name="update_update_btn">
-               </form>   
-            </td>
-            <td>BDT<?php echo $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></td>
-            <td><a href="gift.php?remove=<?php echo $fetch_cart['gift_id']; ?>" onclick="return confirm('Remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i>Remove</a></td>
-         </tr>
-         <?php
-         $grand_total += $sub_total;  
+            <tr>
+               <td><?php echo $fetch_cart['pname']; ?></td>
+               <td>BDT<?php echo number_format($fetch_cart['price']); ?></td>
+               <td><?php echo $fetch_cart['quantity']; ?></td>
+               <td>BDT<?php echo $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></td>
+               <td>
+                  <form action="gift.php" method="post">
+                     <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['gift_id']; ?>" >
+                     <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
+                     <input type="submit" value="update" name="update_update_btn">
+                  </form>   
+               </td>
+               
+               <td><a href="gift.php?remove=<?php echo $fetch_cart['gift_id']; ?>" onclick="return confirm('Remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i>Remove</a></td>
+            </tr>
+            <?php
+            $grand_total += $sub_total;  
+               };
             };
-         };
-         ?>
-         <tr class="table-bottom">
-            <td><a href="products.php" class="option-btn" style="margin-top: 0;">Continue Shopping</a></td>
-            <td colspan="3">Grand Total</td>
-            <td>BDT<?php echo $grand_total; ?></td>
-            <td><a href="gift.php?delete_all" onclick="return confirm('Are you sure you want to delete all?');" class="delete-btn"> <i class="fas fa-trash"></i> Delete All </a></td>
-         </tr>
+            ?>
 
-      </tbody>
+         </tbody>
 
-   </table>
+      </table>
+      <div class="table-bottom">
+               <td colspan="3">Grand Total</td>
+               <td>BDT<?php echo $grand_total; ?></td>
+               <td><a href="gift.php?delete_all" onclick="return confirm('Are you sure you want to delete all?');" class="delete-btn"> <i class="fas fa-trash"></i> Delete All </a></td>
+      </div>
 
-   <div class="checkout-btn">
-      <form action="gift.php" method="post">
-      <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['gift_id']; ?>" >
-      <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
-      <input type="submit" value="update" name="update_update_btn">
-      </form>
-      <a href="checkoutgift.php" class="btn btn-primary">procced to checkout</a>
-   </div>
+      <div class="checkout-btn">
+         <form action="gift.php" method="post">
+         <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['gift_id']; ?>" >
+         <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
+         <input type="submit" value="update" name="update_update_btn">
+         </form>
+         <a href="checkoutgift.php" class="btn btn-primary">procced to checkout</a>
+      </div>
 
 
    </section>
-   </body>
-
+  </body>
 </html>
