@@ -204,11 +204,8 @@
 
       <div class="checkout-btn">
          <form action="gift.php" method="post">
-         <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['gift_id']; ?>" >
-         <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
-         <input type="submit" value="update" name="update_update_btn">
+           <a href="checkoutgift.php" class="btn btn-primary">procced to checkout</a>
          </form>
-         <a href="checkoutgift.php" class="btn btn-primary">procced to checkout</a>
       </div>
 
 
