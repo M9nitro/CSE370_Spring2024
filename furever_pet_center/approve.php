@@ -92,7 +92,36 @@
 
         </div>
   </div>
+  <div class="gift">
+  <?php
+        if(isset($_POST['submit_gift'])){
 
+            if($_SESSION['userID'] != ""){
+
+                $animal_type = detype($_POST['animaltype']);
+                
+                $add_review = $connection_status->prepare("INSERT INTO gift(animal_type, gift_type, gift_price, image) VALUES(?, ?, ?, ?)");
+                $add_review->execute([$animal_type, $_POST['gifttype'], $_POST['price'], $_POST['img']]);
+
+                
+                header('location: gift.php');
+
+            }else{
+                echo 'Please login first!';
+             }
+        }
+        
+    ?>
+
+    <h2>Insert New Gift Products</h2>
+    <form class="gift_add" action="approve.php" method="post">
+    <input class = "grid" type="text" placeholder="Type of Animal" name="animaltype" required>
+    <input class = "grid" type="text" placeholder="Type of Gift" name="gifttype" required>
+    <input class = "grid" type="text" placeholder="Price" name="price" required>
+    <input class = "grid" type="text" placeholder="Image Location" name="img" required><br><br>
+    <button  name = "submit_gift" class="btn btn-primary">Enter Product</button>
+    </form>
+  </div>
   </body>
 
 </head>
