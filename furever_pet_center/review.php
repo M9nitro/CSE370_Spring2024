@@ -41,7 +41,7 @@
                 ?>
                 <?php
                       $id = $row['adopteeID'];
-                      $sql = "SELECT user_name as 'name' FROM user WHERE userID = $id";
+                      $sql = "SELECT user_name as 'name' FROM user_db WHERE userID = $id";
                       $name = mysqli_query($connection_status, $sql);
                       $name = mysqli_fetch_assoc($name);
                 ?>
@@ -85,6 +85,7 @@
 
 
     <form class="row gx-3 gy-2 align-items-center" action="review.php" id = "review", method= "POST">
+        <img class="logo" src="img/logo.png" alt="logo">
         <h3>Leave a Review!</h3>
         <div class="col-sm-3">
             <label for="specificSizeInputName">Title</label>
@@ -116,6 +117,7 @@
         </div>
 
       </form>
+      <div class="empty"></div>
 
       
 
