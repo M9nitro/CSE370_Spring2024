@@ -117,11 +117,11 @@ CREATE TABLE Gift (
 
 CREATE TABLE Gift_given (
 
-    giftID CHAR(10),
+    giftID INT(10),
     animalID CHAR(10),
     userID CHAR(10),
-    number_gift int,
-
+    number_gift INT(5),
+    gift_date DATE(CURDATE()),
     PRIMARY KEY (giftID, animalID, userID),
     FOREIGN KEY (animalID) references PET(petID) ON Delete Cascade,
     FOREIGN KEY (userID) references USER(userID)
