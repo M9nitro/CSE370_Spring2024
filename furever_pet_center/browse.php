@@ -96,6 +96,11 @@
         <td data-label="Type"><?php echo $row[4]; ?></td>
         <td data-label="Rescue Date"><?php echo $row[5]; ?></td>
         <td data-label="Status"><?php echo $status; ?></td>
+        <td data-label="Gift"><?php $pet_id = $row[0]; ?>
+        <form action="gift.php" method="post">
+          <input type="hidden" name = "petID" value="<?php echo $pet_id;?>">
+          <button class= "btn btn-primary" type="submit">Gift a Paw</button>
+        </form></td>
       </tr>
         
         <?php 
