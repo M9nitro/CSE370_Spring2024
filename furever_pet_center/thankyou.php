@@ -19,32 +19,29 @@
 </head>
 <body>
     <?php
-        if(isset($_POST['submit'])){
-            echo $_SESSION['userID'];
-            if($_SESSION['userID'] != ""){
-
-                $donating_userID = $_SESSION['userID'];;
-                $donation_amount = $_POST['amount'];
-                $donation_method = $_POST['method'];
-                echo $donating_userID."\n".$donation_amount."\n".$donation_method;
-                $sql = ("INSERT INTO donation(donating_userID, donation_amount, donation_method, donation_date) VALUES($donating_userID, $donation_amount, $donation_method, CURDATE())");
-                $result = mysqli_query($connection_status, $sql);
-            
-                header('location:thankyou.php');
-
-             }else{
-                $warning_msg[] = 'Please login first!';
-             }
+        if(isset($_POST['Homepage'])){
+            header('location:homepage.php');    
         }
         
+        if(isset($_POST['donate_again'])){
+            header('location:donation.php');    
+        }
     ?>
 
     <div class="container" id= "donation">
         <h1>Thank you for your support!</h1>
         <span class="sub">Our shelter animals will be very grateful.</span><br>
-    <div class="d-grid gap-2 d-md-block">
-    <button name = "Home" href = "#" class="btn btn-primary" data-bs-toggle="button">Home</button>
-    <button name = "donate" href = "donation.php" class="btn btn-primary" data-bs-toggle="button">Donate Again</button>
+    <div class="d-grid gap-2 d-md-block ">
+        <form action="thankyou.php" method="post">
+            <div class="col">
+            <button name = "Homepage" class= "btn btn-primary" type="submit">Home</button>
+            </div>
+        </form>
+        <form action="thankyou.php" method="post">
+            <div class="col">
+            <button name = "donate_again" class= "btn btn-primary" type="submit">Donate Again</button>
+            </div>
+        </form>
     </div>
     
     </div>
