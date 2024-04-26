@@ -41,7 +41,7 @@
                 ?>
                 <?php
                       $id = $row['adopteeID'];
-                      $sql = "SELECT user_name as 'name' FROM user_db WHERE userID = $id";
+                      $sql = "SELECT user_name as 'name' FROM user WHERE userID = $id";
                       $name = mysqli_query($connection_status, $sql);
                       $name = mysqli_fetch_assoc($name);
                 ?>
