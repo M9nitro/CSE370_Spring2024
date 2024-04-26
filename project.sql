@@ -93,7 +93,7 @@ CREATE TABLE Review (
     review_title VARCHAR(20) not NULL,
     rating INT not NULL CHECK(rating BETWEEN 1 AND 5),
     review_date DATE default CURRENT_TIMESTAMP,
-    Review_story text,
+    review_story text,
 
     PRIMARY KEY(adopteeID, reviewNO),
     FOREIGN KEY(adopteeID) references USER(userID)
