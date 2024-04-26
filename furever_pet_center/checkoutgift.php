@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    include_once('DB_connect.php');
-    include('header.php');
+    
+    require_once('DB_connect.php');
+    require('session.php');
     $petID = $_SESSION['petID'];
 
 
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="checkout.css" class="stylesheet">
+    <link rel="stylesheet" href="checkout.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/1e85c12f47.js" crossorigin="anonymous"></script>
@@ -21,6 +21,47 @@
     <title>Checkout</title>
 </head>
 <body>
+
+    <!--NavBar Start -->
+<div class="navbar">
+    <div class="nav-logo">
+      <a href="homepage.php">
+        <img class="logo-img" src="./img/logo.png" alt="">
+      </a>
+      </div>
+    <div class="nav-items">
+      <ul>
+      <li><a href="browse.php">Browse</a></li>
+      <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       echo "<li><a href='#'>Gift a pet </a></li>";
+       echo "<li><a href='#'>Donate</a></li>";
+       echo "<li><a href='#'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+        
+        <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
+        
+      </ul>
+    </div>
+  </div>
+<!-- Nav Bar ENd -->
+
     <section class="cart">
     <h1 class="heading">Shopping Cart</h1>
 

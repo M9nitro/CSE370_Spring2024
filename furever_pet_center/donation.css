@@ -33,6 +33,7 @@ body {
     background-size: cover;
     --bs-body-font-family: var(--bs-font-monospace);
     --bs-body-line-height: 1.9;
+    
   }
 
 
@@ -59,3 +60,56 @@ body {
     --bs-gutter-y: 2.5rem;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+/* Style for the navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #606060; /* Change as per your design */
+  padding: 25px 30px; /* Adjust padding as needed */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+/* Style for the navigation logo */
+.nav-logo a {
+  color: #fff; /* Change color as per your design */
+  text-decoration: none; /* Remove underlines from links */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+/* Style for the navigation items */
+.nav-items ul {
+  list-style-type: none; /* Remove bullet points from list */
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-items ul li {
+  margin-left: 20px; /* Adjust spacing between items */
+  padding-top: 8px;
+}
+
+.nav-items ul li a {
+  color: #fff; /* Change color as per your design */
+  text-decoration: none; /* Remove underlines from links */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+.logo-img{
+  height: 30px;
+}
+
+
+.nav-items .logout {
+  background-color: #39393b;
+  padding: 8px;
+  color: black;
+  border-radius: 6px;
+}

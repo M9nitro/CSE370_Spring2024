@@ -47,7 +47,7 @@ if(isset($_POST['userID']) && isset($_POST['user_name']) && isset($_POST['user_N
 
     $sql_check_user = " SELECT * FROM user WHERE userID = '$userID'";
     
-    $result = mysqli_query($conn, $sql_check_user);
+    $result = mysqli_query($connection_status, $sql_check_user);
     $count = mysqli_num_rows($result);
     
     if ($count > 0) {
@@ -64,10 +64,10 @@ if(isset($_POST['userID']) && isset($_POST['user_name']) && isset($_POST['user_N
 	$sql = " INSERT INTO user VALUES ( '$userID', '$user_name', '$user_nid', '$pass', '$user_DOB',  '$user_phone', '$user_email', '$user_address', '$user_type' ) ";
 	
 	//Execute the query 
-	$result = mysqli_query($conn, $sql);
+	$result = mysqli_query($connection_status, $sql);
 	
 	//check if this insertion is happening in the database
-	if(mysqli_affected_rows($conn)){
+	if(mysqli_affected_rows($connection_status)){
 	
 		//echo "Inserted Successfully";
 		header("Location: index.html");

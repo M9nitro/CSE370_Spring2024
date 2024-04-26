@@ -1,11 +1,9 @@
 <?php
-  session_start();
-  include_once('DB_connect.php');
-  include('header.php');
-
- 
+  require_once('DB_connect.php');
+  require('session.php');
   if($_SESSION['user_type'] != 0){
       $animalID = $_SESSION['petID'];
+      
       if($animalID ==""){
          echo '<script language="javascript">';
          echo 'alert("Select an animal first.")';
@@ -14,16 +12,16 @@
       }
   }
 
-   if($_SESSION['userID'] != ""){
+   // if($_SESSION['userID'] != ""){
 
-       $userID = $_SESSION['userID'];
+   //     $userID = $_SESSION['userID'];
        
-   }else{
-      echo '<script language="javascript">';
-      echo 'alert("Please login first!.")';
-      echo '</script>';
-      header('location:index.html');
-    }
+   // }else{
+   //    echo '<script language="javascript">';
+   //    echo 'alert("Please login first!.")';
+   //    echo '</script>';
+   //    header('location:index.html');
+   //  }
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +29,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="giftstyle.css" type ="text/css/" class="stylesheet">
+    <link rel="stylesheet" href="giftstyle.css" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/1e85c12f47.js" crossorigin="anonymous"></script>
@@ -40,6 +38,49 @@
     <title>Gift A Paw!</title>
 </head>
 <body>
+
+    
+<!--NavBar Start -->
+<div class="navbar">
+    <div class="nav-logo">
+      <a href="homepage.php">
+        <img class="logo-img" src="./img/logo.png" alt="">
+      </a>
+      </div>
+    <div class="nav-items">
+      <ul>
+      <li><a href="browse.php">Browse</a></li>
+      <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       echo "<li><a href='#'>Gift a pet </a></li>";
+       echo "<li><a href='#'>Donate</a></li>";
+       echo "<li><a href='#'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+        
+        <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
+        
+      </ul>
+    </div>
+  </div>
+<!-- Nav Bar ENd -->
+
+
    <section class = "feature_products"></section>
     <?php
          if(isset($_POST['add_to_cart'])){
@@ -82,9 +123,9 @@
       
       ?>
     <?php
-
-         $pet_info = mysqli_query($connection_status, "SELECT * FROM pet_db WHERE petID = '$animalID'");
-         $row = mysqli_fetch_assoc($pet_info);?>
+         $pet_info = mysqli_query($connection_status, "SELECT * FROM pet WHERE petID = '$animalID'");
+         $row = mysqli_fetch_assoc($pet_info);
+         ?>
          <h2>What do you wish to buy for <?php echo $row['pet_name'];?>?</h2>
          <div class="container text-centre">
             <div class="box-container">

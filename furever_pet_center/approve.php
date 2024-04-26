@@ -34,12 +34,29 @@
     <div class="nav-items">
       <ul>
       <li><a href="browse.php">Browse</a></li>
-        <li><a href="rescue.php">Rescue </a></li>
-        <li><a href="adopt.php">Adopt </a></li>
-        <li><a href="#">Gift a pet </a></li>
-        <li><a href="#">Donate </a></li>
-        <li><a href="#">Review</a></li>
-        <li><a href="#">Approve</a></li>
+      <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       echo "<li><a href='#'>Gift a pet </a></li>";
+       echo "<li><a href='#'>Donate</a></li>";
+       echo "<li><a href='#'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+        
         <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
         
       </ul>
@@ -61,7 +78,7 @@
             }
 
             $fetch_approve = "SELECT * FROM request_adoptation WHERE status = 'pending' limit 1;";
-            $fetch_result = mysqli_query($conn, $fetch_approve);
+            $fetch_result = mysqli_query($connection_status, $fetch_approve);
             $fetch_count = mysqli_num_rows($fetch_result);
             if ($fetch_count == 0){
               echo "<h3>No pending requests</h3>";
@@ -71,7 +88,7 @@
                 $animal_query = "SELECT * FROM pet WHERE petID = '" . $array['petID'] . "';";
                 $_SESSION['petID'] = $array['petID'];
 
-                $result = mysqli_query($conn, $animal_query);
+                $result = mysqli_query($connection_status, $animal_query);
                 $row = mysqli_fetch_assoc($result);
                 echo "<p>Pet Name: " . $row['pet_name'] . "</p>";
                 echo "<p>Pet Type: " . detype($row['pet_type']) . "</p>";
@@ -92,36 +109,7 @@
 
         </div>
   </div>
-  <div class="gift">
-  <?php
-        if(isset($_POST['submit_gift'])){
 
-            if($_SESSION['userID'] != ""){
-
-                $animal_type = detype($_POST['animaltype']);
-                
-                $add_review = $connection_status->prepare("INSERT INTO gift(animal_type, gift_type, gift_price, image) VALUES(?, ?, ?, ?)");
-                $add_review->execute([$animal_type, $_POST['gifttype'], $_POST['price'], $_POST['img']]);
-
-                
-                header('location: gift.php');
-
-            }else{
-                echo 'Please login first!';
-             }
-        }
-        
-    ?>
-
-    <h2>Insert New Gift Products</h2>
-    <form class="gift_add" action="approve.php" method="post">
-    <input class = "grid" type="text" placeholder="Type of Animal" name="animaltype" required>
-    <input class = "grid" type="text" placeholder="Type of Gift" name="gifttype" required>
-    <input class = "grid" type="text" placeholder="Price" name="price" required>
-    <input class = "grid" type="text" placeholder="Image Location" name="img" required><br><br>
-    <button  name = "submit_gift" class="btn btn-primary">Enter Product</button>
-    </form>
-  </div>
   </body>
 
 </head>

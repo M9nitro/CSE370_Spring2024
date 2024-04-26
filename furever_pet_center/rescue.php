@@ -21,12 +21,30 @@ require_once('DB_connect.php');
      </div>
   <div class="nav-items">
      <ul>
-       <li><a href="rescue.php">Rescue </a></li>
-       <li><a href="adopt.php">Adopt </a></li>
-       <li><a href="#">Gift a pet </a></li>
-       <li><a href="#">Donate </a></li>
-       <li><a href="#">Review</a></li>
-       <li><a href="#">Approve</a></li>
+     <li><a href="browse.php">Browse</a></li>
+     <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       echo "<li><a href='#'>Gift a pet </a></li>";
+       echo "<li><a href='#'>Donate</a></li>";
+       echo "<li><a href='#'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+       
        <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
        
      </ul>

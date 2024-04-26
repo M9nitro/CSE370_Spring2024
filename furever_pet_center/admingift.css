@@ -1,80 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
-
-*{
-    font-family: 'Poppins', sans-serif;
-    margin:0; padding:0;
+/* * {
+	margin: 0;
+	padding: 0;
     box-sizing: border-box;
-    outline: none; border:none;
-    text-decoration: none;
-    text-transform: capitalize;
-    transition: .2s linear;
+    outline: none;
+    border: none;
+    transition: .2% linear;
+} */
+
+
+img{
+    margin-bottom: 3%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    max-width: 225px !important; 
+    max-height: 225px !important;
 }
 
-.container{
-    padding:15px 9%;
-    padding-bottom: 100px;
-}
-
-.container .heading{
+h2{
+    font-weight: 700;
+    justify-content: center;
     text-align: center;
-    padding-bottom: 15px;
-    color:#fff;
-    text-shadow: 0 5px 10px rgba(0,0,0,.2);
-    font-size: 50px;
+    padding: 2rem 0.9rem;
+	font-size: 2rem;
+	margin-bottom: 0.1rem;
+}
+
+    
+.container{
+    text-align: center;
+    margin: 100px auto;
+    height: 500px;
+    width: 1000px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .container .box-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap:15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust as needed */
+            gap: 20px; /* Adjust the gap between grid items */
+}
+
+h3{
+    display: contents;
+    padding: 10px 20px;
+    color: #000;
+    font-family: Roboto;
+    font-size: 38px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .container .box-container .box{
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     border-radius: 5px;
-    background: #fff;
     text-align: center;
-    padding:30px 20px;
+    padding: 10px, 20px;
+    
 }
 
 .container .box-container .box img{
-    height: 80px;
-    width: 80px;
+    margin:auto;
+   display: block;
 }
 
-.container .box-container .box h3{
-    color:#444;
-    font-size: 22px;
-    padding:10px 0;
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+/* Style for the navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #606060; /* Change as per your design */
+  padding: 25px 30px; /* Adjust padding as needed */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 
-.container .box-container .box p{
-    color:#777;
-    font-size: 15px;
-    line-height: 1.8;
+/* Style for the navigation logo */
+.nav-logo a {
+  color: #fff; /* Change color as per your design */
+  text-decoration: none; /* Remove underlines from links */
+  font-weight: bold; /* Adjust font weight as needed */
 }
 
-.container .box-container .box .btn{
-    margin-top: 10px;
-    display: inline-block;
-    background:#333;
-    color:#fff;
-    font-size: 17px;
-    border-radius: 5px;
-    padding: 8px 25px;
+/* Style for the navigation items */
+.nav-items ul {
+  list-style-type: none; /* Remove bullet points from list */
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-.container .box-container .box .btn:hover{
-    letter-spacing: 1px;
+.nav-items ul li {
+  margin-left: 20px; /* Adjust spacing between items */
+  padding-top: 8px;
 }
 
-.container .box-container .box:hover{
-    box-shadow: 0 10px 15px rgba(0,0,0,.3);
-    transform: scale(1.03);
+.nav-items ul li a {
+  color: #fff; /* Change color as per your design */
+  text-decoration: none; /* Remove underlines from links */
+  font-weight: bold; /* Adjust font weight as needed */
 }
 
-@media (max-width:768px){
-    .container{
-        padding:20px;
+.logo-img{
+  height: 30px;
+}
+
+
+.nav-items .logout {
+  background-color: #39393b;
+  padding: 8px;
+  color: black;
+  border-radius: 6px;
+}
+
+
+.gift_add_container {
+    margin: 0 auto 100px; /* Center the container */
+    max-width: 600px; /* Adjust the maximum width as needed */
+    height: 300px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+
+}
+
+
+.gift_add {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns grid */
+        gap: 10px; /* Adjust the gap between grid items */
     }
-}
+.gift_add input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+.gift_add input[type="submit"] {
+        grid-column: 1 / -1; /* Span across all columns */
+    }

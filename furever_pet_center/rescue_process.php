@@ -35,19 +35,21 @@ $pet_name = $_POST['pet_name'];
 $vet_report = nullORnot('vet_report');
 $pet_age = $_POST['pet_age'];
 $pet_breed = $_POST['pet_breed'];
+$rescue_date = date("Y-m-d");
 $pet_owners = explode(" ", $_POST['past_owners']);
 
 
-
+$sql_rescuer_check = "SELECT * FROM user WHERE userID = '$rescuerID'";
+$verify = mysqli_num_rows(mysqli_query($connection_status, $sql_rescuer_check));
 
 $sql_check = "SELECT * FROM pet WHERE petID = '$petID'";
 $count = mysqli_num_rows(mysqli_query($connection_status, $sql_check));
 
-if ($count > 0) {
+if ($count > 0 || $verify == 0) {
 
     echo "<script>
-       alert('Pet Already Exists');
-       console.log('Pet Already Exists');
+       alert('Set New user name or No such rescuer Found');
+       console.log('Set New user name or No such rescuer Found');
     </script>";
     
     header("Location: rescue.php");
@@ -61,7 +63,7 @@ $sql = " INSERT INTO pet VALUES ( '$petID',  '$rescuerID',  '$pet_name', '$pet_a
 $result = mysqli_query($connection_status, $sql);
 
 for($x = 0; $x < sizeof($pet_owners); $x++){
-    $sql = "INSERT INTO past_petowner VALUES('$petID', '$pet_owners[$x]')";
+    $sql = "INSERT INTO past_petowner VALUES('$petID', '$pet_owners[$x]');";
     $result = mysqli_query($connection_status, $sql);
 }
 //check if this insertion is happening in the database

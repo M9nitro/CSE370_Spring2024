@@ -1,7 +1,7 @@
 <?php
-  session_start();
-  include_once('DB_connect.php');
-  include('header.php');
+  require_once('DB_connect.php');
+  require('session.php');
+
 
 ?>
 
@@ -18,19 +18,64 @@
     <title>Donation</title>
 </head>
 <body>
+<!--NavBar Start -->
+<div class="navbar">
+    <div class="nav-logo">
+      <a href="homepage.php">
+        <img class="logo-img" src="./img/logo.png" alt="">
+      </a>
+      </div>
+    <div class="nav-items">
+      <ul>
+      <li><a href="browse.php">Browse</a></li>
+      <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       echo "<li><a href='#'>Gift a pet </a></li>";
+       echo "<li><a href='#'>Donate</a></li>";
+       echo "<li><a href='#'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+        
+        <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
+        
+      </ul>
+    </div>
+  </div>
+<!-- Nav Bar ENd -->
+
+
+
     <?php
         if(isset($_POST['submit'])){
 
             if($_SESSION['userID'] != ""){
 
-                $donating_userID = $_SESSION['userID'];;
+                $donating_userID = $_SESSION['userID'];
                 $donation_amount = $_POST['amount'];
                 $donation_method = $_POST['method'];
+                $date = date("Y-m-d");
+            
                
-                $sql = ("INSERT INTO donation(donating_userID, donation_amount, donation_method, donation_date) VALUES($donating_userID, $donation_amount, $donation_method, CURDATE())");
+                $sql = "INSERT INTO donation (userID, donation_amount, donation_method, donation_date) VALUES ('$donating_userID', '$donation_amount', '$donation_method', '$date')";
+
                 $result = mysqli_query($connection_status, $sql);
             
-                header('location:thankyou.php');
+                header('location: thankyou.php');
 
              }else{
                 $warning_msg[] = 'Please login first!';

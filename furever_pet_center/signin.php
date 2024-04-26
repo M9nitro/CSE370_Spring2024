@@ -12,7 +12,7 @@ if(isset($_POST['userID']) && isset($_POST['pass'])){
 	$sql_query = "SELECT * FROM user WHERE userID = '$user' AND user_password = '$pass'";
 	
 	//Execute the query 
-	$result = mysqli_query($conn, $sql_query);
+	$result = mysqli_query($connection_status, $sql_query);
 	
 	//check if it returns an empty set
 	if(mysqli_num_rows($result) !=0 ){

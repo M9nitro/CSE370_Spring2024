@@ -33,12 +33,30 @@
       </div>
     <div class="nav-items">
       <ul>
-        <li><a href="rescue.php">Rescue </a></li>
-        <li><a href="adopt.php">Adopt </a></li>
-        <li><a href="#">Gift a pet </a></li>
-        <li><a href="#">Donate </a></li>
-        <li><a href="#">Review</a></li>
-        <li><a href="approve.php">Approve</a></li>
+      <li><a href="browse.php">Browse</a></li>
+      <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       echo "<li><a href='#'>Gift a pet </a></li>";
+       echo "<li><a href='#'>Donate</a></li>";
+       echo "<li><a href='#'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+        
         <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
         
       </ul>
@@ -58,21 +76,21 @@
           $PetID = $_POST['PetID'];
           $sql = "SELECT pet_name, pet_age, pet_type, pet_breed, rescuerID FROM pet WHERE petID = '$PetID';";
           
-          $result = mysqli_query($conn, $sql);
+          $result = mysqli_query($connection_status, $sql);
           
           $resultCheck = mysqli_num_rows($result);
           
           if ($resultCheck > 0) { $petdetails = mysqli_fetch_assoc($result);
             $petdetails['pet_type'] = detype($petdetails['pet_type']);
             $sql = "SELECT user_address FROM user WHERE userID = '$petdetails[rescuerID]';";
-            $location = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+            $location = mysqli_fetch_assoc(mysqli_query($connection_status, $sql));
 
             $sql_found = "SELECT status FROM request_adoptation WHERE petID = '$PetID';";
-            $found_result = mysqli_query($conn, $sql_found);
+            $found_result = mysqli_query($connection_status, $sql_found);
             $found = mysqli_num_rows($found_result);
           
             $sql_exist = "SELECT * FROM request_adoptation WHERE adopteeID = '$_SESSION[userID]';";
-            $exist_result = mysqli_query($conn, $sql_exist);
+            $exist_result = mysqli_query($connection_status, $sql_exist);
             $exist = mysqli_num_rows($exist_result);
 
 
