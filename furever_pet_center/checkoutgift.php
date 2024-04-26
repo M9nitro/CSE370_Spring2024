@@ -70,6 +70,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Total</th>
         </thead>
 
     <tbody>
@@ -137,8 +138,9 @@
 
         
     ?>
+    <div class= "bill">
 
-    <form class="row gx-3 gy-2 align-items-center bill" action="checkoutgift.php" id = "checkout", method= "POST">
+    <form class="row gx-3 gy-2 align-items-center" action="checkoutgift.php" id = "checkout", method= "POST">
         <h1>Billing Summary</h1>
         <div class="col-sm-3">
             <label for="specificSizeInputName">Name</label>
@@ -186,6 +188,7 @@
             <button type="submit" name = "submit" class="btn btn-primary">Confirm Checkout</button>
         </div>
     </form>
+    </div>
    </section>
 
 
