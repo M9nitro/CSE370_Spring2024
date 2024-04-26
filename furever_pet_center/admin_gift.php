@@ -41,7 +41,7 @@
         <h1 class="heading">Welcome Admin!</h1>
         <p>Here's the list of products available.</p>
             <div class="box-container">
-                <div class="box">
+                
                          
                     <?php
                         $select_products = mysqli_query($connection_status, "SELECT * FROM gift");
@@ -49,6 +49,7 @@
                             while($fetch_product = mysqli_fetch_assoc($select_products)){
 
                     ?>
+                  <div class="box">
                     <form action="admin_gift.php" method="post">
                         <img class= "image" src="<?php echo $fetch_product['image']; ?>">
                         <h3><?php echo $fetch_product['giftID'].". ".$fetch_product['gift_type']; ?></h3>
