@@ -168,33 +168,6 @@ VALUES
 ('P003', 'U002', 'Snowball', 1, 'Lionhead', 2, 'Underweight', '2023-09-20');
 
 
--- Inserting data into Donation table
-INSERT INTO Donation (userID, TransactionID, donation_amount, donation_method, donation_date)
-VALUES 
-('U001', 001, 1000, 1, '2023-07-15'),
-('U002', 002, 500, 1, '2023-08-20'),
-('U003', 003, 750, 2, '2023-09-25');
-
--- Inserting data into Review table
-INSERT INTO Review (adopteeID, reviewNO, rating, review_date, Review_story)
-VALUES 
-('U003', 'R001', 5, '2023-08-01', 'Great experience, highly recommend!'),
-('U002', 'R002', 4, '2023-09-10', 'Good service, could improve communication.');
-
--- Inserting data into Gift table
-INSERT INTO Gift (giftID, animal_type, gift_type, gift_price, image)
-VALUES 
-('G001', 0, 'Food', 100, 'food.png'),
-('G002', 1, 'Food', 200, 'food.png'),
-('G003', 2, 'Food', 300, 'food.png');
-
--- Inserting data into Gift_given table
-INSERT INTO Gift_given (giftID, animalID, userID, number_gift)
-VALUES 
-('G001', 'P001', 'U001', 1),
-('G002', 'P002', 'U003', 2),
-('G003', 'P003', 'U002', 3);
-
 -- Inserting more data into USER table
 INSERT INTO USER (userID, user_name, user_NID, user_password, user_DOB, user_phone, user_email, user_address, user_type)
 VALUES 
