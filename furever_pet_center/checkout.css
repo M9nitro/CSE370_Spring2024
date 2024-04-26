@@ -6,35 +6,49 @@
     }
 }
 .cart{
-    justify-content: center;
-    align-items: center;
-    padding: 50px 50px;
-}
-.cart .content-table{
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.7rem;
-    min-width: 400px;
-}
-.cart .content-table thead tr{
-    background-color: #0b071d;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+  align-items: center !important;
+  margin: 100px auto;
+  padding-bottom: 30%;
+  height: auto;
+  width: 80%;
+  padding: 50px;
+  background-position-x: center;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.cart .content-table th,
-.content-table td{
-    padding: 12px 15px;
+.cart .content-table{
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.7rem;
+  min-width: 400px;
+}
+.cart .content-table tbody, th, thead {
+  padding: 10px 20px;
+  background-color: #39393b;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.cart .table-bottom{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  max-width: 40%;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #39393b;
 }
 
 .content-table tbody tr{
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 
 }
 .content-table tbody tr:nth-of-type(even){
-    background-color: #F2E8C6;
-    
+  background-color: #F2E8C6;
+  
 }
 .bank{
     display: none;
@@ -42,6 +56,7 @@
 .bkash{
     display: none;
 }
+
 .bill {
     max-width: 70%;
     font-family: 'Bree Serif', serif;
