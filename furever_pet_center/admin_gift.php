@@ -107,7 +107,7 @@
             <button  name = "submit_gift" class="btn btn-primary">Enter Product</button>
         </form>
 
-        <button class="btn btn-outline" value=<?php header('location: gift.php')?>;>Check Inventory</button>;
+        <a class="btn btn-outline" href=<?php header('location: gift.php')?>;>Check Inventory</a>;
     </div>
 </body>
 </html>
