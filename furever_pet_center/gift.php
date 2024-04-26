@@ -70,7 +70,7 @@
       ?>
     <?php
       if($_SESSION['user_type'] != 0){
-         $pet_info = mysqli_query($connection_status, "SELECT * FROM pet_db WHERE petID = '$animalID'");
+         $pet_info = mysqli_query($connection_status, "SELECT * FROM pet WHERE petID = '$animalID'");
          $row = mysqli_fetch_assoc($pet_info);?>
          <h2>What do you wish to buy for <?php echo $row['pet_name'];?>?</h2>
          <div class="container text-centre">
