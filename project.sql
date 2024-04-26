@@ -75,10 +75,10 @@ CREATE TABLE Donation (
     TransactionID INT(10) not NULL AUTO_INCREMENT,
     donation_amount INT not NULL CHECK(donation_amount >= 0),
 
-     -- 1 is Bank Transfer
+    -- 1 is Bank Transfer
     -- 2 is Mobile Banking
-    donation_method TINYINT not NULL CHECK(donation_method BETWEEN 0 AND 2),
-    donation_date DATE,
+    donation_method TINYINT not NULL CHECK(donation_method BETWEEN 1 AND 2),
+    donation_date DATE default CURRENT_TIMESTAMP,
 
     PRIMARY KEY (TransactionID),
     FOREIGN KEY (userID) references USER(userID)
@@ -91,7 +91,7 @@ CREATE TABLE Review (
     adopteeID CHAR(10) not NULL,
     reviewNO INT(10) not NULL,
     rating INT not NULL CHECK(rating BETWEEN 1 AND 5),
-    review_date DATE,
+    review_date DATE default CURRENT_TIMESTAMP,
     Review_story text,
 
     PRIMARY KEY(adopteeID, reviewNO),
@@ -101,14 +101,16 @@ CREATE TABLE Review (
 --Gift Entity
 
 CREATE TABLE Gift (
-
-    giftID INT(10) not NULL,
-    animal_breed VARCHAR(10),
-
+    giftID INT(10) not NULL AUTO_INCREMENT,
+    animal_type TINYINT not NULL CHECK(animal_type BETWEEN 0 AND 2),
+    gift_type VARCHAR(20),
+    gift_price INT(5),
+    image VARCHAR(50),
+    
     -- 0 is CAT
     -- 1 is DOG
     -- 2 is RABBIT
-    animal_type TINYINT not NULL CHECK(animal_type BETWEEN 0 AND 2),
+    
 
     PRIMARY KEY (giftID)
 );
@@ -116,13 +118,13 @@ CREATE TABLE Gift (
 --Gift Given relation
 
 CREATE TABLE Gift_given (
-
+    serial INT(10) AUTO_INCREMENT,
     giftID INT(10),
     animalID CHAR(10),
     userID CHAR(10),
     number_gift INT(5),
-    gift_date DATE(CURDATE()),
-    PRIMARY KEY (giftID, animalID, userID),
+    gift_date DATE default CURRENT_TIMESTAMP,
+    PRIMARY KEY (serial, giftID, animalID, userID),
     FOREIGN KEY (animalID) references PET(petID) ON Delete Cascade,
     FOREIGN KEY (userID) references USER(userID)
 );
@@ -155,12 +157,6 @@ VALUES
 ('P002', 'U002', 'Buddy', 2, 'Labrador', 1, 'Vaccinated', '2023-08-05'),
 ('P003', 'U002', 'Snowball', 1, 'Lionhead', 2, 'Underweight', '2023-09-20');
 
--- Inserting data into Past_petOwner table
-INSERT INTO Past_petOwner (petID, OwnerName)
-VALUES 
-('P001', 'John Doe'),
-('P002', 'Alice Johnson'),
-('P003', 'John Doe');
 
 -- Inserting data into Donation table
 INSERT INTO Donation (userID, TransactionID, donation_amount, donation_method, donation_date)
@@ -195,7 +191,8 @@ VALUES
 ('U004', 'Michael Brown', 2468013579, 'password4', '1995-08-12', '2468013579', 'michael@example.com', '101 Elm St', 1),
 ('U005', 'Emily Davis', 9876543210, 'password5', '1992-04-28', '9876543210', 'emily@example.com', '202 Maple St', 2),
 -- Add more users as needed
-('U006', 'David Wilson', 3692581470, 'password6', '1988-11-15', '3692581470', 'david@example.com', '303 Pine St', 0);
+('Admin', 'Meheruba', 3692581470, '1234', '1988-11-15', '3692581470', 'david@example.com', '303 Pine St', 0);
+('Admin', 'Marzan', 3692581470, 'abcd', '1988-11-15', '3692581470', 'david@example.com', '303 Pine St', 0);
 
 -- Inserting more data into PET table
 INSERT INTO PET (petID, rescuerID, pet_name, pet_age, pet_Breed, pet_type, vet_report, rescue_date)
@@ -205,42 +202,4 @@ VALUES
 -- Add more pets as needed
 ('P006', 'U005', 'Cotton', 1, 'Angora', 2, 'Underweight', '2023-12-20');
 
--- Inserting more data into Past_petOwner table
-INSERT INTO Past_petOwner (petID, OwnerName)
-VALUES 
-('P004', 'Michael Brown'),
-('P005', 'Emily Davis'),
--- Add more past pet owners as needed
-('P006', 'Michael Brown');
 
--- Inserting more data into Donation table
-INSERT INTO Donation (userID, TransactionID, donation_amount, donation_method, donation_date)
-VALUES 
-('U004', 'T004', 1500, 0, '2023-10-10'),
-('U005', 'T005', 1000, 1, '2023-11-20'),
--- Add more donations as needed
-('U006', 'T006', 1200, 2, '2023-12-25');
-
--- Inserting more data into Review table
-INSERT INTO Review (adopteeID, reviewNO, rating, review_date, Review_story)
-VALUES 
-('U004', 'R003', 5, '2023-10-01', 'Wonderful service, exceeded expectations!'),
-('U005', 'R004', 3, '2023-11-15', 'Decent experience, could be better communicated.'),
--- Add more reviews as needed
-('U006', 'R005', 4, '2023-12-20', 'Good service, friendly staff.');
-
--- Inserting more data into Gift table
-INSERT INTO Gift (giftID, number_gift, animal_breed, animal_type)
-VALUES 
-('G004', 8, 'Maine Coon', 0),
-('G005', 3, 'German Shepherd', 1),
--- Add more gifts as needed
-('G006', 5, 'Angora', 2);
-
--- Inserting more data into Gift_given table
-INSERT INTO Gift_given (giftID, animalID, userID)
-VALUES 
-('G004', 'P004', 'U002'),
-('G005', 'P005', 'U001'),
--- Add more gift-given entries as needed
-('G006', 'P006', 'U003');
