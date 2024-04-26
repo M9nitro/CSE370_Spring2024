@@ -90,6 +90,7 @@ CREATE TABLE Review (
 
     adopteeID CHAR(10) not NULL,
     reviewNO INT(10) not NULL,
+    review_title VARCHAR(20) not NULL,
     rating INT not NULL CHECK(rating BETWEEN 1 AND 5),
     review_date DATE default CURRENT_TIMESTAMP,
     Review_story text,
