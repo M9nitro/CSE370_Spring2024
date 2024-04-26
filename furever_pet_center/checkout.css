@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Quicksand&display=swap');
+@media (min-width: 576px) {
+    .col-sm-3 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+.cart{
+    justify-content: center;
+    align-items: center;
+    padding: 50px 50px;
+}
+.cart .content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.7rem;
+    min-width: 400px;
+}
+.cart .content-table thead tr{
+    background-color: #0b071d;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.cart .content-table th,
+.content-table td{
+    padding: 12px 15px;
+}
+
+.content-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+
+}
+.content-table tbody tr:nth-of-type(even){
+    background-color: #F2E8C6;
+    
+}
+.bank{
+    display: none;
+} 
+.bkash{
+    display: none;
+}
+.bill {
+    max-width: 70%;
+    font-family: 'Bree Serif', serif;
+    text-align: left;
+    margin: 9%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+    background-color: #F2E8C6;
+}
