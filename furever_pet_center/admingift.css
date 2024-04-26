@@ -1,13 +1,32 @@
-/* * {
+* {
 	margin: 0;
 	padding: 0;
     box-sizing: border-box;
     outline: none;
     border: none;
     transition: .2% linear;
-} */
+}
+.container .heading, p{
+  align-self: center;
+  color: #fdcfc3;
 
-
+}
+.container p{
+  margin-bottom: 40px;
+}
+body{
+  background-image: url('img/pexels-jacp-3777622.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; 
+}
+.container .box-container .box .btn{
+  margin-bottom: 10px;
+  border-color: #000;
+  border-radius: 5px;
+  background-color: white;
+  color: #000;
+}
 img{
     margin-bottom: 3%;
     display: block;
@@ -22,26 +41,30 @@ h2{
     justify-content: center;
     text-align: center;
     padding: 2rem 0.9rem;
-	font-size: 2rem;
-	margin-bottom: 0.1rem;
+	  font-size: 2rem;
+	  margin-bottom: 0.1rem;
 }
 
-    
+.gift_add{
+  z-index: 1;
+  background: #FFFFFF;
+  margin: 0 auto 100px;
+
+}
 .container{
+    position: relative;
     text-align: center;
     margin: 100px auto;
-    height: 500px;
-    width: 1000px;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding-bottom: 30%;
+    height: auto;
+    width: 80%;
+    padding: 50px;
 }
 
 .container .box-container{
     display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust as needed */
-            gap: 20px; /* Adjust the gap between grid items */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
 }
 
 h3{
@@ -56,75 +79,26 @@ h3{
 }
 
 .container .box-container .box{
-
+    background-color: #FFFFFF;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     border-radius: 5px;
     text-align: center;
     padding: 10px, 20px;
+    margin-bottom: 10px;
     
 }
 
 .container .box-container .box img{
     margin:auto;
-   display: block;
+    display: block;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-/* Style for the navbar container */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #606060; /* Change as per your design */
-  padding: 25px 30px; /* Adjust padding as needed */
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 100;
-}
-
-/* Style for the navigation logo */
-.nav-logo a {
-  color: #fff; /* Change color as per your design */
-  text-decoration: none; /* Remove underlines from links */
-  font-weight: bold; /* Adjust font weight as needed */
-}
-
-/* Style for the navigation items */
-.nav-items ul {
-  list-style-type: none; /* Remove bullet points from list */
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.nav-items ul li {
-  margin-left: 20px; /* Adjust spacing between items */
-  padding-top: 8px;
-}
-
-.nav-items ul li a {
-  color: #fff; /* Change color as per your design */
-  text-decoration: none; /* Remove underlines from links */
-  font-weight: bold; /* Adjust font weight as needed */
-}
-
-.logo-img{
-  height: 30px;
-}
-
-
-.nav-items .logout {
-  background-color: #39393b;
-  padding: 8px;
-  color: black;
-  border-radius: 6px;
-}
-
 
 .gift_add_container {
+    position: relative;
+    display: block;
     margin: 0 auto 100px; /* Center the container */
     max-width: 600px; /* Adjust the maximum width as needed */
     height: 300px;
@@ -135,7 +109,6 @@ h3{
 
 
 }
-
 
 .gift_add {
         display: grid;
@@ -150,3 +123,67 @@ h3{
 .gift_add input[type="submit"] {
         grid-column: 1 / -1; /* Span across all columns */
     }
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+    /* Style for the navbar container */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #606060; /* Change as per your design */
+      padding: 25px 30px; /* Adjust padding as needed */
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 100;
+    }
+    
+    /* Style for the navigation logo */
+    .nav-logo a {
+      color: #fff; /* Change color as per your design */
+      text-decoration: none; /* Remove underlines from links */
+      font-weight: bold; /* Adjust font weight as needed */
+    }
+    
+    /* Style for the navigation items */
+    .nav-items ul {
+      list-style-type: none; /* Remove bullet points from list */
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    
+    .nav-items ul li {
+      margin-left: 20px; /* Adjust spacing between items */
+      padding-top: 8px;
+    }
+    
+    .nav-items ul li a {
+      color: #fff; /* Change color as per your design */
+      text-decoration: none; /* Remove underlines from links */
+      font-weight: bold; /* Adjust font weight as needed */
+    }
+    
+    .logo-img{
+      height: 30px;
+    }
+    
+    
+    .nav-items .logout {
+      background-color: #39393b;
+      padding: 8px;
+      color: black;
+      border-radius: 6px;
+    }
+    
+    
+    @keyframes fadeIn {
+        0% {
+          opacity: 0; /* Start with fully transparent */
+        }
+        100% {
+          opacity: 1; /* Fade in to fully opaque */
+        }
+      }
