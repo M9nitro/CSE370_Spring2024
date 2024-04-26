@@ -55,7 +55,7 @@ if ($count > 0) {
 }
 
 
-$sql = " INSERT INTO pet_db VALUES ( '$petID',  '$rescuerID',  '$pet_name', '$pet_age', '$pet_breed', '$pet_type', '$vet_report', '$rescue_date') ";
+$sql = " INSERT INTO pet VALUES ( '$petID',  '$rescuerID',  '$pet_name', '$pet_age', '$pet_breed', '$pet_type', '$vet_report', '$rescue_date') ";
 
 //Execute the query 
 $result = mysqli_query($connection_status, $sql);
