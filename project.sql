@@ -129,6 +129,15 @@ CREATE TABLE Gift_given (
     FOREIGN KEY (userID) references USER(userID)
 );
 
+CREATE TABLE cart (
+    pname varchar(10),
+	price int(4),
+	quantity	int(5),
+	gift_id INT(10),
+    PRIMARY KEY (gift_id),
+    FOREIGN KEY (gift_id) references gift(giftID)
+);
+
 --Request Adoptation
 CREATE TABLE Request_adoptation (
     petID CHAR(10),
