@@ -4,24 +4,35 @@
         width: 32%;
     }
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Quicksand&display=swap');
 #review {
     margin: 9%;
     padding: 5%;
-    background-color: #F2E8C6;
+    background-color: #606060;;
+	font-family: 'Bree Serif', serif;
+	color: white;
+	margin-bottom: 30%;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Quicksand&display=swap');
+.empty{
+	width: 100%;
+	height: 20px;
+}
 
 * {
 	margin: 0;
 	padding: 0;
 }
 
+.logo{
+	align-self: left;
+	max-width: 30% !important;
+	max-height: auto;
+}
+
 body {
 	box-sizing: border-box;
-	font-family: Poppins, sans-serif;
-	display: flex;
+	font-family: 'Bree Serif', serif;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
@@ -43,7 +54,6 @@ h2 {
 	padding: 0 40px;
 	margin: 30px 0 50px;
 	position: relative;
-	background-color: white;
 	display: flex;
 	flex-direction: column;
 }
@@ -64,38 +74,41 @@ h2 {
 .testimonial {
 	width: 25%;
 	border-radius: 20px;
-	background: linear-gradient(to right bottom, #ffcc81, #f7d4a6af, #ffe2bcb6, #ffcbcf60, #f7d3dd60);
+	background: linear-gradient(to right bottom, #ffcc81, #f7d4a683, #ffe2bc54, #ffcbcf60, #f7d3dd60);
 	padding: 20px;
 	position: relative;
 	margin-bottom: 20px;
 }
 
 .testimonial:after {
-  content: "";
-  display: block; /* reduce the damage in FF3.0 */
-  position: absolute;
-  bottom: -15px;
-  right: 50px;
-  width: 0;
-  border-width: 15px 20px 0;
-  border-style: solid;
-  border-color: #F7D3DD60 transparent;
+	content: "";
+	display: block; /* reduce the damage in FF3.0 */
+	position: absolute;
+	bottom: -15px;
+	right: 50px;
+	width: 0;
+	border-width: 15px 20px 0;
+	border-style: solid;
+	border-color: #F7D3DD60 transparent;
 }
 
 .testimonial h3 {
+	font-family: 'Bree Serif', serif;
 	margin-bottom: 10px;
 }
 
 .testimonial p {
+	font-family: 'Bree Serif', serif;
 	font-size: 1.2rem;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.9rem;
+	bottom: 3%;
 }
 
 .testimonal-author {
 	font-size: 1rem;
 	position: absolute;
 	bottom: -40px;
-	right: 0;
+	right: 10%;
 }
 
 @media all AND (max-width: 700px) {
