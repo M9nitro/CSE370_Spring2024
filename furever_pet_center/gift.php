@@ -1,6 +1,8 @@
 <?php
   require_once('DB_connect.php');
   require('session.php');
+  require('header.php');
+
   if($_SESSION['user_type'] != 0){
       $animalID = $_SESSION['petID'];
       
@@ -10,18 +12,10 @@
          echo '</script>';
          header('location:browse.php');
       }
+  }else{
+      header('location:admin_gift.php');
   }
 
-   // if($_SESSION['userID'] != ""){
-
-   //     $userID = $_SESSION['userID'];
-       
-   // }else{
-   //    echo '<script language="javascript">';
-   //    echo 'alert("Please login first!.")';
-   //    echo '</script>';
-   //    header('location:index.html');
-   //  }
 ?>
 
 <!DOCTYPE html>
@@ -38,48 +32,6 @@
     <title>Gift A Paw!</title>
 </head>
 <body>
-
-    
-<!--NavBar Start -->
-<div class="navbar">
-    <div class="nav-logo">
-      <a href="homepage.php">
-        <img class="logo-img" src="./img/logo.png" alt="">
-      </a>
-      </div>
-    <div class="nav-items">
-      <ul>
-      <li><a href="browse.php">Browse</a></li>
-      <?php $type = $_SESSION['user_type'];
-        if ($type == 2) {
-          echo "<li><a href='adopt.php'>Adopt</a></li>";
-        }
-        else if ($type == 1) {
-          echo "<li><a href='rescue.php'>Rescue</a></li>";
-        }
-
-       if ($type != 0) {
-       echo "<li><a href='#'>Gift a pet </a></li>";
-       echo "<li><a href='#'>Donate</a></li>";
-       echo "<li><a href='#'>Review</a></li>";
-
-       }
-       else{
-        echo "<li><a href='rescue.php'>Rescue</a></li>";
-        echo "<li><a href='adopt.php'>Adopt</a></li>";
-        
-        echo "<li><a href='user.php'>Users</a></li>";
-        echo "<li><a href='approve.php'>Approve</a></li>";
-       }
-       ?>
-        
-        <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
-        
-      </ul>
-    </div>
-  </div>
-<!-- Nav Bar ENd -->
-
 
    <section class = "feature_products"></section>
     <?php
@@ -162,20 +114,19 @@
                               </select>
                            </div>
                            <div class="action-buttons"><input type="submit" id= "add-to-cart" class="btn btn-outline" value="add to cart" name="add_to_cart"></div>
+                     </form>
 
-                        </div>
-               </form>
-
-            </div>
+                  </div>
+                  <?php
+                     };
+                  };?>
          </div>
 
-         <?php
-               };
-            };?>
+         
          
    </section>
 
-   <section class="cart">
+   <div class="cart">
       <h1 class="heading">Shopping cart</h1>
 
       <table class="content_table">
@@ -185,8 +136,8 @@
                <th>Name</th>
                <th>Price</th>
                <th>Quantity</th>
-               <th>Total price</th>
-               <th>Update</th>
+               <th class="up">Total price</th>
+               <th class="up" >Quantity Update</th>
                <th>Delete</th>
                
             </tr>
@@ -211,12 +162,12 @@
                <td>
                   <form action="gift.php" method="post">
                      <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['gift_id']; ?>" >
-                     <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
+                     <input class = "quantity" type="number" class="btn" name="update_quantity" min="1"  value="<?php echo $fetch_cart['quantity']; ?>" >
                      <input type="submit" value="update" name="update_update_btn">
                   </form>   
                </td>
                
-               <td><a href="gift.php?remove=<?php echo $fetch_cart['gift_id']; ?>" onclick="return confirm('Remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i>Remove</a></td>
+               <td><a href="gift.php?remove=<?php echo $fetch_cart['gift_id']; ?>" onclick="return confirm('Remove item from cart?')" class="btn delete-btn"> <i class="fas fa-trash"></i>Remove</a></td>
             </tr>
             <?php
             $grand_total += $sub_total;  
@@ -228,7 +179,7 @@
 
       </table>
       <div class="table-bottom">
-               <td colspan="3">Grand Total</td>
+               <td colspan="3">Grand Total: </td>
                <td>BDT<?php echo $grand_total; ?></td>
                
       </div>
@@ -240,7 +191,7 @@
       </div>
 
 
-   </section>
+   </div>
    </body>
 
 </html>
