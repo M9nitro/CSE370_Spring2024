@@ -42,9 +42,8 @@
       <li><a href="browse.php">Browse</a></li>
         <li><a href="rescue.php">Rescue </a></li>
         <li><a href="adopt.php">Adopt </a></li>
-        <li><a href="#">Gift a pet </a></li>
-        <li><a href="#">Donate </a></li>
-        <li><a href="#">Review</a></li>
+        <li><a href="donation.php">Donate </a></li>
+        <li><a href="review.php">Review</a></li>
         <li><a href="approve.php">Approve</a></li>
         <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
         
