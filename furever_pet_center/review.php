@@ -1,5 +1,5 @@
 <?php
-
+  
   require_once('DB_connect.php');
   require('session.php');
   $sql = "SELECT * FROM review";
@@ -41,15 +41,15 @@
         }
 
        if ($type != 0) {
-       echo "<li><a href='#'>Gift a pet </a></li>";
-       echo "<li><a href='#'>Donate</a></li>";
-       echo "<li><a href='#'>Review</a></li>";
+       
+       echo "<li><a href='donation.php'>Donate</a></li>";
+       echo "<li><a href='review.php'>Review</a></li>";
 
        }
        else{
         echo "<li><a href='rescue.php'>Rescue</a></li>";
         echo "<li><a href='adopt.php'>Adopt</a></li>";
-        
+        echo "<li><a href='admin_gift.php'>Inventory</a></li>";
         echo "<li><a href='user.php'>Users</a></li>";
         echo "<li><a href='approve.php'>Approve</a></li>";
        }
@@ -63,7 +63,7 @@
 <!-- Nav Bar ENd -->
 
 
-   <div class="testimonials-container">
+   <section class="testimonials-container">
         <h2>Furever Reviews</h2>
         <span>See what our users have to say about us!</span>
         <div class="testimonials">
@@ -74,7 +74,7 @@
                
                 <?php $y = '<svg xmlns="http://www.w3.org/2000/svg" height="14" width="15.75" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>' ?>
                 <h3><?php echo $row['review_title']; ?></h3>
-                <p><?php echo $row['Review_story']; ?><br>
+                <p><?php echo $row['review_story']; ?><br>
                 <?php 
                 for($x=0;$x<$row['rating'];$x++){
                     echo $y;
@@ -97,11 +97,11 @@
         </div>
 
 
-      </div>
+   </section>
    <?php
         if(isset($_POST['submit'])){
 
-            if($_SESSION['userID'] != "" && $_POST['randcheck']==$_SESSION['rand']){
+            if($_SESSION['userID'] != ""){
 
                 $adopteeID = $_SESSION['userID'];
                 $sql = "SELECT COUNT(*) as total FROM review WHERE adopteeID = '$adopteeID';";
@@ -115,57 +115,53 @@
                 $add_review = $connection_status->prepare("INSERT INTO review(adopteeID, reviewNO, review_title, review_story, rating) VALUES(?, ?, ?, ?, ?)");
                 $add_review->execute([$adopteeID, $review_no, $title, $description, $rating]);
 
+                
+                // header('location: review.php');
+                
+
             }else{
-                echo '<script language="javascript">';
-                echo 'alert("Refresh Again or Login Again.")';
-                echo '</script>';
+                echo 'Please login first!';
              }
         }
         
     ?>
 
-    <div class="form">
-      <form class="row gx-3 gy-2 align-items-center" action="review.php" id = "review", method= "POST">
-                <?php
-                  $rand=rand();
-                  $_SESSION['rand']= $rand;
-                ?>
-          <img class="logo" src="img/logo.png" alt="logo">
-          <h3>Leave a Review!</h3>
-          <div class="col-sm-3">
-              <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
-              <label for="specificSizeInputName">Title</label>
-              <input name = "title" type="text" class="form-control" id="specificSizeInputName" placeholder="Enter a Title" required>
-          </div>
-          <div class="col-12">
-              <label for="specificSizeInputName">Description</label>
-              <input name = "story" type="text" class="form-control" id="specificSizeInputName" placeholder="Write Your Review">
-              <input type="hidden" value="<?php echo $rand; ?>" name="randcheck" />
 
-              
-          </div>
-          <div class="col-sm-3">
-              <label for="specificSizeSelect">Rating</label>
-              <select name="rating" class="form-select" id="specificSizeSelect">
-              <option>Give Us a Rating!</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+    <form class="row gx-3 gy-2 align-items-center" action="review.php" id = "review", method= "POST">
+        <img class="logo" src="img/logo.png" alt="logo">
+        <h3>Leave a Review!</h3>
+        <div class="col-sm-3">
+            <label for="specificSizeInputName">Title</label>
+            <input name = "title" type="text" class="form-control" id="specificSizeInputName" placeholder="Enter a Title" required>
+        </div>
+        <div class="col-12">
+            <label for="specificSizeInputName">Description</label>
+            <input name = "story" type="text" class="form-control" id="specificSizeInputName" placeholder="Write Your Review">
 
-              </select>
+            
+        </div>
+        <div class="col-sm-3">
+            <label for="specificSizeSelect">Rating</label>
+            <select name="rating" class="form-select" id="specificSizeSelect">
+            <option>Give Us a Rating!</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
 
-          
-          </div>
-          
-          <div>
-              <button type="submit" name = "submit" class="btn btn-primary">Submit</button>
-          </div>
+            </select>
 
-        </form>
+         
+        </div>
+
+        <div>
+            <button type="submit" name = "submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
       <div class="empty"></div>
-    </div>  
+
       
 
 </body>

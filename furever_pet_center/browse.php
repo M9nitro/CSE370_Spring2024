@@ -50,15 +50,15 @@
         }
 
        if ($type != 0) {
-       echo "<li><a href='#'>Gift a pet </a></li>";
-       echo "<li><a href='#'>Donate</a></li>";
-       echo "<li><a href='#'>Review</a></li>";
+       
+       echo "<li><a href='donation.php'>Donate</a></li>";
+       echo "<li><a href='review.php'>Review</a></li>";
 
        }
        else{
         echo "<li><a href='rescue.php'>Rescue</a></li>";
         echo "<li><a href='adopt.php'>Adopt</a></li>";
-       
+        echo "<li><a href='admin_gift.php'>Inventory</a></li>";
         echo "<li><a href='user.php'>Users</a></li>";
         echo "<li><a href='approve.php'>Approve</a></li>";
        }

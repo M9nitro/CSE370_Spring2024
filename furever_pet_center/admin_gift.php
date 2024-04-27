@@ -61,15 +61,14 @@
         }
 
        if ($type != 0) {
-       echo "<li><a href='#'>Gift a pet </a></li>";
-       echo "<li><a href='#'>Donate</a></li>";
-       echo "<li><a href='#'>Review</a></li>";
+       echo "<li><a href='donation.php'>Donate</a></li>";
+       echo "<li><a href='review.php'>Review</a></li>";
 
        }
        else{
         echo "<li><a href='rescue.php'>Rescue</a></li>";
         echo "<li><a href='adopt.php'>Adopt</a></li>";
-        
+        echo "<li><a href='admin_gift.php'>Inventory</a></li>";
         echo "<li><a href='user.php'>Users</a></li>";
         echo "<li><a href='approve.php'>Approve</a></li>";
        }
@@ -94,7 +93,7 @@
                     ?>  
                     <div class="box">
                     <img class= "image" src="<?php echo $fetch_product['image']; ?>">
-                        <h3><?php echo $fetch_product['giftID'] . " - " . $fetch_product['gift_type']; ?></h3>
+                        <h3><?php echo $fetch_product['gift_type']; ?></h3>
                         <p class="price">BDT<?php echo $fetch_product['gift_price']; ?></p>
 
                     <form action="admin_gift.php" method="post">

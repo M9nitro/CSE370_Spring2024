@@ -1,7 +1,7 @@
 <?php
   require_once('DB_connect.php');
   require('session.php');
-  require('header.php');
+  
 
   if($_SESSION['user_type'] != 0){
       $animalID = $_SESSION['petID'];
@@ -32,6 +32,48 @@
     <title>Gift A Paw!</title>
 </head>
 <body>
+
+  <!--NavBar Start -->
+<div class="navbar">
+    <div class="nav-logo">
+      <a href="homepage.php">
+        <img class="logo-img" src="./img/logo.png" alt="">
+      </a>
+      </div>
+    <div class="nav-items">
+      <ul>
+      <li><a href="browse.php">Browse</a></li>
+      <?php $type = $_SESSION['user_type'];
+        if ($type == 2) {
+          echo "<li><a href='adopt.php'>Adopt</a></li>";
+        }
+        else if ($type == 1) {
+          echo "<li><a href='rescue.php'>Rescue</a></li>";
+        }
+
+       if ($type != 0) {
+       
+       echo "<li><a href='donation.php'>Donate</a></li>";
+       echo "<li><a href='review.php'>Review</a></li>";
+
+       }
+       else{
+        echo "<li><a href='rescue.php'>Rescue</a></li>";
+        echo "<li><a href='adopt.php'>Adopt</a></li>";
+        echo "<li><a href='admin_gift.php'>Inventory</a></li>";
+        echo "<li><a href='user.php'>Users</a></li>";
+        echo "<li><a href='approve.php'>Approve</a></li>";
+       }
+       ?>
+        
+        <li class = "logout" ><a href="destroy_session.php">Log out</a></li>
+        
+      </ul>
+    </div>
+  </div>
+<!-- Nav Bar ENd -->
+
+
 
    <section class = "feature_products"></section>
     <?php
@@ -90,7 +132,7 @@
                ?>    
                         <div class="col">
                         <form action="gift.php" method="post"> 
-                           <img class= "image" src="<?php echo $fetch_product['image']; ?>">
+                        <img class= "image" src="<?php echo $fetch_product['image']; ?>">
                            <h3><?php echo $fetch_product['gift_type']; ?></h3>
                            <p class="price">BDT<?php echo $fetch_product['gift_price']; ?></p>
                            <input type="hidden" name="product_id"  value="<?php echo $fetch_product['giftID']; ?>" >

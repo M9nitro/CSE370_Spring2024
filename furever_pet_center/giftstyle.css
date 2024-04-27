@@ -162,6 +162,11 @@ h3{
     
 }
 
+.box-container .col form img {
+    margin:auto;
+    display:block;
+}
+
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
