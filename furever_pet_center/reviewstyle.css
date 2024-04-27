@@ -49,48 +49,53 @@ h2 {
 	font-size: 2rem;
 	margin-bottom: 0.1rem;
 }
+.form{
+	position: relative;
+    margin: 100px auto;
+    padding-bottom: 30%;
+    width: 80%;
+    padding: 50px;
+    border-radius: 10px;
+}
 
 .testimonials-container {
+	text-align: center;
 	padding: 0 40px;
-	margin: 30px 0 50px;
+	margin: 30px 10px 30px 10px;
+	height: auto;
+    width: 100%;
+    padding: 50px;
 	position: relative;
-	display: flex;
-	flex-direction: column;
+
 }
 
 .testimonials {
-	display: flex;
+	margin-top: 40px;
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; 
 	justify-content: space-evenly;
 	align-items: space-evenly;
 }
 
 .testimonials-container h2 {
+	font-size: 4rem;
 	padding: 5px 5px 5px;
 	text-align: center;
 	width: 100%;
 	margin: 0 auto 10px;
 }
 
-.testimonial {
-	width: 25%;
+ .testimonial {
+	text-align: center;
+	margin: 10px 20px 10px 20px!important; 
+	max-width: 60%;
 	border-radius: 20px;
-	background: linear-gradient(to right bottom, #ffcc81, #f7d4a683, #ffe2bc54, #ffcbcf60, #f7d3dd60);
+	background: linear-gradient(to right bottom, #f0c17bcc, #f8c17ad5, #eeca9cbd, #ffcbcf60, #f7d3dd60);
 	padding: 20px;
-	position: relative;
-	margin-bottom: 20px;
+	
 }
 
-.testimonial:after {
-	content: "";
-	display: block; /* reduce the damage in FF3.0 */
-	position: absolute;
-	bottom: -15px;
-	right: 50px;
-	width: 0;
-	border-width: 15px 20px 0;
-	border-style: solid;
-	border-color: #F7D3DD60 transparent;
-}
 
 .testimonial h3 {
 	font-family: 'Bree Serif', serif;
@@ -106,7 +111,6 @@ h2 {
 
 .testimonal-author {
 	font-size: 1rem;
-	position: absolute;
 	bottom: -40px;
 	right: 10%;
 }
